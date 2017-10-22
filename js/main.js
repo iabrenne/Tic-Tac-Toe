@@ -1,6 +1,8 @@
 var userxOrO;
 
-var xOrOTurn ;
+var xOrOTurn;
+
+var computer;
 
 
 
@@ -26,7 +28,16 @@ var flipXOOX = () => (xOrOTurn == "X") ? xOrOTurn = "O" : xOrOTurn = "X";
 
 
 
+
+
 var move = (event) => {
+
+
+    // do not let human player click for the computer 
+
+    if (!computer && xOrOTurn != userxOrO)
+    
+        return;
 
     numOfClickedButtons ++ ;
     
@@ -35,6 +46,8 @@ var move = (event) => {
     $('#' + event.target.id ).attr("disabled", true);
 
     flipXOOX();
+
+    if (computer) computer = false;
 
 
 }   
@@ -162,14 +175,18 @@ var findNextEnabledButton = () => {
 
 
 
+
 var nextMove = () => {
 
    
+    // if users turn get out of here. This logic is for computer move only //
 
     if (userxOrO == xOrOTurn ) return;
 
 
-    // if computers turn - make a move;
+    computer = true;
+
+    // replace this function with something more intelligent 
 
     findNextEnabledButton().click();
 
