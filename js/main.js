@@ -4,6 +4,7 @@ var xOrOTurn;
 
 var computer;
 
+var numOfClickedButtons = 0;
 
 
 var xOrOChoiceMade = (event) => {
@@ -15,17 +16,13 @@ var xOrOChoiceMade = (event) => {
     $("#pic-x-or-o").css("display","none");
     $("#tic-tac-toe-grid").css("display","block");            
     
-    }   
+}   
 
 
-var numOfClickedButtons = 0;
 
 
 
 var flipXOOX = () => (xOrOTurn == "X") ? xOrOTurn = "O" : xOrOTurn = "X";
-
-
-
 
 
 
@@ -53,9 +50,9 @@ var move = (event) => {
 }   
 
 
-
 var communicateGameOver = (gameOverText) => { 
-    
+
+  
    
      alert(gameOverText);
     
@@ -63,28 +60,8 @@ var communicateGameOver = (gameOverText) => {
 
 
 
-var reset = () => {
-    
-        
-        var buttons = $(".tic-tac-toe-btn");
-    
-    
-    
-        for (button in buttons ) {
-    
-            
-            buttons[button].innerText = "";
-            buttons[button].disabled =  false ;
-    
-        }
-    
-        numOfClickedButtons = 0;
-    
-    };
 
-
-
-var whoWon = () => {
+    var whoWon = () => {
 
 
     switch(true){
@@ -105,11 +82,48 @@ var whoWon = () => {
             return $("#button-4").text() ;
 
 
+
         // if buttons 7, 8 or 9 have same value and value is not blank, someone won.
 
         case $("#button-7").text() == $("#button-8").text() && $("#button-8").text() == $("#button-9").text() && $("#button-9").text() != "" :
         
             return $("#button-7").text() ;
+
+
+
+        // if buttons 1, 4 or 7 have same value and value is not blank, someone won.
+
+        case $("#button-1").text() == $("#button-4").text() && $("#button-4").text() == $("#button-7").text() && $("#button-1").text() != "" :
+        
+            return $("#button-1").text() ;
+
+
+
+            // if buttons 2, 5 or 8 have same value and value is not blank, someone won.
+
+            case $("#button-2").text() == $("#button-5").text() && $("#button-5").text() == $("#button-8").text() && $("#button-2").text() != "" :
+            
+                return $("#button-2").text() ;
+
+
+
+        // if buttons 3, 6 or 9 have same value and value is not blank, someone won.
+
+            case $("#button-3").text() == $("#button-6").text() && $("#button-6").text() == $("#button-9").text() && $("#button-3").text() != "" :
+            
+                return $("#button-3").text() ;
+
+
+        // if buttons 1, 5 or 9 have same value and value is not blank, someone won.
+        case $("#button-1").text() == $("#button-5").text() && $("#button-5").text() == $("#button-9").text() && $("#button-1").text() != "" :
+        
+            return $("#button-1").text() ;
+
+
+        // if buttons 3, 5 or 7 have same value and value is not blank, someone won.
+        case $("#button-3").text() == $("#button-5").text() && $("#button-5").text() == $("#button-7").text() && $("#button-3").text() != "" :
+        
+            return $("#button-3").text() ;
 
 
         default:
@@ -120,6 +134,35 @@ var whoWon = () => {
 
 } ;
 
+
+var reset = () => {
+    
+    
+        
+        var buttons = $(".tic-tac-toe-btn");
+    
+    
+    
+        for (button in buttons ) {
+    
+            
+            buttons[button].innerText = "";
+            buttons[button].disabled =  false ;
+    
+        }
+    
+        numOfClickedButtons = 0;
+    
+};
+    
+var startOver = () => {
+    
+        reset();
+        
+        $("#pic-x-or-o").css("display","block");
+        $("#tic-tac-toe-grid").css("display","none"); 
+    
+};
 
 
 var gameOverCheck = () => {
@@ -151,11 +194,7 @@ var gameOverCheck = () => {
    
 }
 
-
-
 var intervalID = window.setInterval(gameOverCheck, 1000);
-
-
 
 
 var findNextEnabledButton = () => {
@@ -172,9 +211,6 @@ var findNextEnabledButton = () => {
 
 
 }
-
-
-
 
 var nextMove = () => {
 
@@ -193,6 +229,7 @@ var nextMove = () => {
 }
 
 var setInterval = window.setInterval(nextMove, 1000);
+
 
 
 
