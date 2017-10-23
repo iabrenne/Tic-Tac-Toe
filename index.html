@@ -2,9 +2,11 @@
 
 
 <html>
+
     <head> 
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">      
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">   
+        <link rel = "stylesheet" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah">   
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="css/style.css"> 
        
@@ -19,15 +21,15 @@
             <h2>Would you like to be X or O?</h2>
 
             
-                <div>
+                <p>
                     <input class="w3-radio" type="radio" value="X" onClick="xOrOChoiceMade(event)">
                     <label>X</label>
-                </div>
+                </p>
 
-                <div>
-                    <input class="w3-radio" type="radio" value="O" onClick="xOrOChoiceMade(event)">
+                <p>
+                    <input class="w3-radio" type="radio" value="O" onclick="xOrOChoiceMade(event)">
                     <label>O</label>
-                </div>
+                </p>
     
 
         </div>
@@ -59,6 +61,12 @@
                     --><button id="button-8" onclick="move(event)" class="tic-tac-toe-btn w3-button w3-border"></button><!--
                     --><button id="button-9" onclick="move(event)" class="tic-tac-toe-btn w3-button w3-border"></button>
                     
+                </div>
+
+                <div> 
+
+                    <button id="start-over" class="w3-button w3-border w3-margin" onclick="startOver()">Start Over</button>
+                
                 </div>
 
 
