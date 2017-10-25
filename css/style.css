@@ -4,7 +4,7 @@ label {
     
 }
 #pic-x-or-o{
-    max-width:600px;
+    max-width:600px;    
     margin-left:auto;
     margin-right:auto;
 
@@ -31,11 +31,12 @@ label {
 .tic-tac-toe-btn {
 
     box-sizing:border-box;
-    width:30vw;
-    height:30vw;
+    width:30vmin;
+    height:30vmin;
     max-width: 150px;
     max-height:150px;
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 65px;
+
 }
 
