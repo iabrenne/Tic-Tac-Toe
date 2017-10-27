@@ -49,9 +49,6 @@ var gameOverCheck = () => {
     if ( winner != "noone") {
 
         communicateGameOver(winner + " won!");
-
-        reset();
-
         
     }
 
@@ -60,9 +57,6 @@ var gameOverCheck = () => {
 
 
        communicateGameOver("Tie!");
-
-
-       reset();
  
 
     }
