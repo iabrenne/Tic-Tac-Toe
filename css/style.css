@@ -40,3 +40,20 @@ label {
 
 }
 
+#announce-winner{
+    display:none;
+    max-width:600px;    
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#button-div{
+
+    display:none;
+    max-width:600px; 
+    margin-left:auto;
+    margin-right:auto; 
+
+}
+

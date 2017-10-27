@@ -6,10 +6,11 @@ var clearRadioButtons = () => {
 };
 
 
-var communicateGameOver = (gameOverText) => {   
+var communicateGameOver = (gameOverText) => {  
+    
+   $("#tic-tac-toe-grid").css("display","none"); 
       
-       
-         alert(gameOverText);
+   $("#announce-winner").css("display","block");
 
         
 };
@@ -21,7 +22,8 @@ var xOrOChoiceMade = (event) => {
 
 
     $("#pic-x-or-o").css("display","none");
-    $("#tic-tac-toe-grid").css("display","block");            
+    $("#tic-tac-toe-grid").css("display","block");    
+    $("#button-div").css("display","block");        
     
 };
 
