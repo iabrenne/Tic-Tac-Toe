@@ -23,7 +23,6 @@ var communicateGameOver = (myWinningInfo) => {
     
         myWinner = myWinningInfo.winner;
         reset();
-        hideGrid();
         $("#announce-winner").css("display","block");
         $("#announce-winner>h2").text((myWinner == "tie") ? "Tie!" : myWinner + " won!");
 
@@ -57,6 +56,8 @@ var reset = () => {
      
 
         hideWinAnnounce();  
+
+        hideGrid();
 
         window.clearTimeout(intervalNextRound);
 
