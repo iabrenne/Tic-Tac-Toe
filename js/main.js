@@ -67,24 +67,12 @@ var gameOverCheck = () => {
     
      
 
-}
+};
    
 
 
 var gameOverCheckIntervalID = window.setInterval(gameOverCheck, 1000);
 
-var findNextEnabledButton = () => {
-
-
-    var buttons = $(".tic-tac-toe-btn");
-    
-        for (button in buttons ) {
-                
-    
-            if  ( buttons[button].disabled == false) return buttons[button];
-    
-        }
-}
 
 var nextMove = () => {
 
@@ -98,9 +86,10 @@ var nextMove = () => {
 
     // replace this function with something more intelligent 
 
-    findNextEnabledButton().click();
+    nextButtonToClick().click();  
+    
 
-}
+};
 
 
 
