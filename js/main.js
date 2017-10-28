@@ -31,39 +31,47 @@ var whoWon = () => {
 
         if ($("#button-" + combo[0]).text() != "" 
             &&  $("#button-" + combo[0]).text() == $("#button-" + combo[1]).text()  
-            &&  $("#button-" + combo[1]).text() == $("#button-" + combo[2]).text() )
-           
-                return $("#button-" + combo[0]).text();
+            &&  $("#button-" + combo[1]).text() == $("#button-" + combo[2]).text() ) {
 
-
+                var winner = $("#button-" + combo[0]).text();
+                return { "winner" : winner, "combo" : combo };
+              
+            }   
     };
 
-    return "noone";
+    return { "winner":"noone" };
 };
 
 
 var gameOverCheck = () => {
 
-    var winner = whoWon();
 
-    if ( winner != "noone") {
+    var winningInfo = whoWon();
 
-        communicateGameOver(winner + " won!");
+    if ( winningInfo.winner != "noone") {
+        
+        console.log(winningInfo.winner + " won");   
+
+        communicateGameOver(winningInfo);
         
     }
 
     
     else if (numOfClickedButtons == 9 ) {
 
-
-       communicateGameOver("Tie!");
+    
+        communicateGameOver( {"winner" : "tie"} );
  
 
     }
-    
 
-   
+    else nextMove();
+    
+     
+
 }
+   
+
 
 var gameOverCheckIntervalID = window.setInterval(gameOverCheck, 1000);
 
@@ -78,14 +86,12 @@ var findNextEnabledButton = () => {
             if  ( buttons[button].disabled == false) return buttons[button];
     
         }
-
-
 }
 
 var nextMove = () => {
 
    
-    // if users turn get out of here. This logic is for computer move only //
+    // if users turn get out of here. This logic is for computer move only 
 
     if (userxOrO == xOrOTurn ) return;
 
@@ -98,6 +104,6 @@ var nextMove = () => {
 
 }
 
-var nextMoveCheckIntervalID = window.setInterval(nextMove, 1000);
+// var nextMoveCheckIntervalID = window.setInterval(nextMove, 1000);
 
 
