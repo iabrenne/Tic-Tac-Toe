@@ -49,8 +49,6 @@ var gameOverCheck = () => {
     var winningInfo = whoWon();
 
     if ( winningInfo.winner != "noone") {
-        
-        console.log(winningInfo.winner + " won");   
 
         communicateGameOver(winningInfo);
         
@@ -104,6 +102,6 @@ var nextMove = () => {
 
 }
 
-// var nextMoveCheckIntervalID = window.setInterval(nextMove, 1000);
+
 
 
