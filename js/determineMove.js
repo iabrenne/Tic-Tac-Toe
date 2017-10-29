@@ -12,13 +12,34 @@ var findNextEnabledButton = () => {
         }
 };
 
-// Check if computer has already claimed 2 buttons in a row and 3rd button is still blank.
-// If so, return the blank button so that it can be clicked as a winning move for computer.
 
-var findWinningButton = () => {    
+// Check if computer has already claimed 2 buttons out of any winning 
+// combination and 3rd button is still blank.  If so, return the blank
+// button so that it can be clicked as a winning move for the computer.
+var findWinningButton =() => {
+
+    return findButtonToCompleteWinningCombo(xOrOTurn)
+
+};
+
+
+
+// Check if human player has already claimed 2 buttons out of any winning 
+// combination and 3rd button is still blank. If so, block it to prevent
+//human player from winning.
+
+var findBlockingButton =() => {
     
-    var i, j, combo, numOfButtonsInWinningComboHeldByComputer, 
-        numOfUnclaimedButtonsInWinningCombo, currBtnId, blankBtnId;
+    return findButtonToCompleteWinningCombo(userxOrO)
+    
+    };
+
+
+
+var findButtonToCompleteWinningCombo = (checkXOrY) => {    
+    
+    var i, j, combo, numOfClaimedButtonsinWinningCombo, 
+        numOfUnclaimedButtonsInWinningCombo, curBtnId, blankBtnId;
 
     for (i=0; i<winningCombos.length; i++) {
         
@@ -26,22 +47,23 @@ var findWinningButton = () => {
 
         numOfButtonsInWinningComboHeldByComputer = 0;
         numOfUnclaimedButtonsInWinningCombo = 0;
-        currBtnId = 0;
+        numOfClaimedButtonsinWinningCombo = 0;
+        curBtnId = 0;
         blankBtnId = 0;
 
         for ( j=0; j<combo.length; j++ ) {
 
             curBtnId = "#button-" + combo[j];
-            if ($(curBtnId).text() == xOrOTurn)
-                numOfButtonsInWinningComboHeldByComputer ++ ; 
+            if ($(curBtnId).text() == checkXOrY)
+                numOfClaimedButtonsinWinningCombo ++ ; 
     
-            if ($(curBtnId).text() == "") {
+            else if ($(curBtnId).text() == "") {
                 numOfUnclaimedButtonsInWinningCombo++;
                 blankBtnId = "#button-" + combo[j];                
             } 
         };
         
-        if (numOfButtonsInWinningComboHeldByComputer == 2 &&
+        if (numOfClaimedButtonsinWinningCombo == 2 &&
             numOfUnclaimedButtonsInWinningCombo == 1)
                 return $(blankBtnId);
     }; 
@@ -51,10 +73,15 @@ var findWinningButton = () => {
 
 var nextButtonToClick = () => {
 
-    var winButton;
+    var winButton, blockButton;
     
     winButton = findWinningButton();
     if (winButton) return winButton;
+
+    blockButton=findBlockingButton()
+    if (blockButton) return blockButton;
+
+
     return findNextEnabledButton();
 
 
