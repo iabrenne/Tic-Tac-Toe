@@ -70,6 +70,11 @@ var findButtonToCompleteWinningCombo = (checkXOrY) => {
     
 };
 
+// If computer is player 2 and player 1 took the corner, take the middle block 
+var middleButtonMove = () => { 
+    return ( numOfClickedButtons == 1 && $("#button-5").text() == "" );
+};
+
 
 var nextButtonToClick = () => {
 
@@ -81,6 +86,7 @@ var nextButtonToClick = () => {
     blockButton=findBlockingButton()
     if (blockButton) return blockButton;
 
+    if ( middleButtonMove() ) return $("#button-5");
 
     return findNextEnabledButton();
 
