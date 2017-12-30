@@ -35,7 +35,7 @@ var whoWon = () => {
 
                 var winner = $("#button-" + combo[0]).text();
                 return { "winner" : winner, "combo" : combo };
-              
+                
             }   
     };
 
