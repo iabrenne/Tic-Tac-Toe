@@ -1,3 +1,9 @@
+function delay(t){
+    return new Promise(function(resolve){
+      return setTimeout(resolve, t)
+    });
+  }
+
 var clearRadioButtons = () => {
 
     $("#user-x").prop('checked',false);
@@ -22,20 +28,22 @@ var hideStartOver = () => $("#button-div").css("display","none");
 var communicateGameOver = (myWinningInfo) => {  
     
         myWinner = myWinningInfo.winner;
-        reset();
+        
+        myWinningInfo.combo.forEach( value => {
+
+            $(`#button-${value}`).css("color","red");
+
+        });
+
+        delay(2000).then(reset);
+
         $("#announce-winner").css("display","block");
         $("#announce-winner>h2").text((myWinner == "tie") ? "Tie!" : myWinner + " won!");
 
 
-    intervalNextRound = setTimeout(()=> {        
-        hideWinAnnounce();
+        delay(2000).then(hideWinAnnounce);     
+     
         showGrid();
-
-
-    }, 5000);
-
-    
-
         
 };
 
